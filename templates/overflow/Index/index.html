@@ -1,0 +1,32 @@
+{% extends 'shared/_layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Task List: </h1>
+        <ol>
+            <li>
+                Questions List:
+                <ul>
+                    <li>Votes</li>
+                    <li>Answer</li>
+                    <li>Views</li>
+                    <li>Asked At</li>
+                    <li>Asked By</li>
+                </ul>
+            </li>
+            <li>
+                Ask Questions:
+                <ul>
+                    <li>If Registered</li>
+                    <li>Title, Body, Tags</li>
+                </ul>
+            </li>
+            <li>
+                Filter:
+                <ul>
+                    <li>By Week</li>
+                    <li>By Month</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+{% endblock %}
