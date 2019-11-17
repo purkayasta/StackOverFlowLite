@@ -1,0 +1,17 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+    Ask Questions
+{% endblock %}
+{% block head %}
+    <h2><u>Ask a public questions !</u></h2>
+    <br>
+{% endblock %}
+{% block content %}
+    <form method="post" class="col-xs-10" novalidate>
+        {% csrf_token %}
+        <div class="card card-body mb-2">
+            {% include 'shared/_forms.html' %}
+        </div>
+        <button type="submit" class="btn btn-dark">Post</button>
+    </form>
+{% endblock %}
