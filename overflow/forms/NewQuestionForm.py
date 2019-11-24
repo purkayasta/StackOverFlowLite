@@ -16,7 +16,7 @@ class NewQuestionForm(forms.ModelForm):
     )
 
     description = forms.CharField(
-        max_length=4000,
+        max_length=14000,
         required=True,
         help_text='**Maximum 4000 character is allowed',
         widget=forms.Textarea(
@@ -26,10 +26,21 @@ class NewQuestionForm(forms.ModelForm):
             }
         )
     )
+    tag = forms.CharField(
+        max_length=120,
+        required=True,
+        help_text='comma separated text',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control'
+            }
+        )
+    )
 
     class Meta:
         model = QuestionModel
         fields = [
             'title',
-            'description'
+            'description',
+            'tag'
         ]

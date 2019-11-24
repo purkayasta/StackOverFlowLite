@@ -42,7 +42,7 @@
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
-                        <td>{{ question.title | capfirst }}</td>
+                        <td><a href="{% url 'question_detail' question.pk %}">{{ question.title | capfirst }}</a></td>
                         <td>asked {{ question.asked_at | timesince }} ago</td>
                         <td>asked by {{ question.asked_by | capfirst }}</td>
                     </tr>
