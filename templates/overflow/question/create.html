@@ -10,6 +10,7 @@
     <form method="post" class="col-xs-10" novalidate>
         {% csrf_token %}
         <div class="card card-body mb-2">
+            {{ form.media }}
             {% include 'shared/_forms.html' %}
         </div>
         <button type="submit" class="btn btn-dark">Post</button>

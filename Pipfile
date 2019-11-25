@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 ipython = "*"
 django-widget-tweaks = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.8"

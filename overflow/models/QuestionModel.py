@@ -1,10 +1,11 @@
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 from django.db import models
 
 
 class QuestionModel(models.Model):
     title = models.CharField(max_length=120, unique=True)
-    description = models.TextField()
+    description = RichTextField(null=True)
     tag = models.CharField(max_length=120, null=True)
     views = models.PositiveIntegerField(default=0)
     asked_at = models.DateTimeField(auto_now=True)

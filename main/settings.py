@@ -35,6 +35,7 @@ USER_APP = [
 
 LIBRARY_APP = [
     'widget_tweaks',
+    'ckeditor',
 ]
 
 INSTALLED_APPS = [
@@ -125,3 +126,25 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+CKEDITOR_JQUERY_URL = '/static/JSLibrary/jquery-3.4.1.js'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'height': 'auto',
+        'width': 'auto',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
+             'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+            ['RemoveFormat', 'Source'],
+            ['CodeSnippet']
+        ],
+        'codeSnippet_theme': 'atelier-lakeside.light',
+        'font_name': 'Cascadia Code',
+        'extraPlugins': 'codesnippet'
+    }
+}

@@ -1,3 +1,4 @@
+from ckeditor.widgets import CKEditorWidget
 from django import forms
 
 from overflow.models.QuestionModel import QuestionModel
@@ -18,8 +19,7 @@ class NewQuestionForm(forms.ModelForm):
     description = forms.CharField(
         max_length=14000,
         required=True,
-        help_text='**Maximum 4000 character is allowed',
-        widget=forms.Textarea(
+        widget=CKEditorWidget(
             attrs={
                 'placeholder': 'Please explain your questions in details',
                 'class': 'form-control'
