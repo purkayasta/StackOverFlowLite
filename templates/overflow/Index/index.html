@@ -40,8 +40,8 @@
                 {% for question in questions %}
                     <tr>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>{{ question }}</td>
+                        <td>{{ question.views }}</td>
                         <td><a href="{% url 'question_detail' question.pk %}">{{ question.title | capfirst }}</a></td>
                         <td>asked {{ question.asked_at | timesince }} ago</td>
                         <td>asked by {{ question.asked_by | capfirst }}</td>
@@ -50,33 +50,5 @@
                 </tbody>
             </table>
         </div>
-
-        <h1>Task List: </h1>
-        <ol>
-            <li>
-                Questions List:
-                <ul>
-                    <li>Votes</li>
-                    <li>Answer</li>
-                    <li>Views</li>
-                    <li>Asked At</li>
-                    <li>Asked By</li>
-                </ul>
-            </li>
-            <li>
-                Ask Questions:
-                <ul>
-                    <li>If Registered</li>
-                    <li>Title, Body, Tags</li>
-                </ul>
-            </li>
-            <li>
-                Filter:
-                <ul>
-                    <li>By Week</li>
-                    <li>By Month</li>
-                </ul>
-            </li>
-        </ol>
     </div>
 {% endblock %}

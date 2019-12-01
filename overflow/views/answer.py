@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse
 
-from overflow.models import AnswerModel, QuestionModel
+from overflow.models import QuestionModel
 from overflow.forms.NewAnswerForm import AnswerForm
 
 
@@ -14,6 +13,6 @@ def record_answer(request, question_pk):
             answer_model.question = question_object
             answer_model.answer_by = None
             answer_model.save()
-            return redirect('question_detail')
+            return redirect('question_detail', question_pk)
     else:
-        return reverse('question_detail', kwargs=('pk', question_pk))
+        return redirect('question_detail', question_pk)

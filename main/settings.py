@@ -133,14 +133,12 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
         'height': 'auto',
-        'width': 'auto',
+        'width': '200%',
         'toolbar_Custom': [
             ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
-             'JustifyRight', 'JustifyBlock'],
-            ['Link', 'Unlink'],
+            ['NumberedList', 'BulletedList'],
             ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
-            ['RemoveFormat', 'Source'],
+            ['RemoveFormat'],
             ['CodeSnippet']
         ],
         'codeSnippet_theme': 'atelier-lakeside.light',

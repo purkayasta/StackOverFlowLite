@@ -6,7 +6,7 @@ from overflow.models import AnswerModel
 
 class ReplyModel(models.Model):
     reply = models.CharField(max_length=120)
-    answer = models.ForeignKey(AnswerModel, null=True, on_delete=models.CASCADE, related_name='ReplyModel')
+    answer = models.ForeignKey(AnswerModel, null=True, on_delete=models.CASCADE, related_name='replies')
     reply_at = models.DateTimeField(auto_now=True)
     reply_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
