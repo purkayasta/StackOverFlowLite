@@ -31,3 +31,16 @@ def question_detail(request, pk):
         'answers': question_answers,
         'form': form
     })
+
+
+def voting(request, pk, operation):
+    question_object = QuestionModel.objects.get(pk=pk)
+    if question_object:
+        if operation == 1:
+            question_object.votes += 1
+        elif operation == 0:
+            question_object.votes -= 1
+        else:
+            pass
+        question_object.save()
+    return redirect('question_detail', pk)

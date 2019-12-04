@@ -8,6 +8,7 @@ class QuestionModel(models.Model):
     description = RichTextField(null=True)
     tag = models.CharField(max_length=120, null=True)
     views = models.PositiveIntegerField(default=0)
+    votes = models.IntegerField(default=0)
     asked_at = models.DateTimeField(auto_now=True)
     asked_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
@@ -18,3 +19,5 @@ class QuestionModel(models.Model):
         if self.tag:
             return self.tag.split(',')
 
+    def answer_count(self):
+        return self.answers.count()

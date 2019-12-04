@@ -8,6 +8,7 @@ from overflow.models import QuestionModel
 class AnswerModel(models.Model):
     answer = RichTextField(max_length=120)
     views = models.PositiveIntegerField(default=0)
+    votes = models.IntegerField(default=0)
     question = models.ForeignKey(QuestionModel, null=True, on_delete=models.CASCADE, related_name='answers')
     answer_at = models.DateTimeField(auto_now=True)
     answer_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
