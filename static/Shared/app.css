@@ -25,3 +25,7 @@ a.nav-link {
     float: left;
     color: #39739d;
 }
+
+code {
+    font-family: Consolas;
+}

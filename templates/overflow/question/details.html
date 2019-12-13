@@ -4,6 +4,7 @@
     Question Details
 {% endblock %}
 {% block head %}
+    <link rel="stylesheet" href="{% static 'CSSLibrary/vsdark.css' %}">
     <div class="col-xl-12">
         <h2>{{ single_question.title | capfirst }}</h2>
         <div class="col-xl-2" style="float: left;">
@@ -23,18 +24,18 @@
         <div>
             <div class="col-md-1" style="float: left; height: 150px; text-align: center;">
                 <div class="mt-3">
-                    <a href="{% url 'voting' single_question.pk 1 %}"><img src="{% static 'Images/Icons/plus.png' %}" height="35px" alt=""></a>
+                    <a href="{% url 'voting' single_question.pk 1 %}"><img src="{% static 'Images/Icons/plus.png' %}"
+                                                                           height="35px" alt=""></a>
                 </div>
                 <div class="mt-3">
                     <h4>{{ single_question.votes }}</h4>
                 </div>
                 <div class="mt-3">
-                    <a href="{% url 'voting' single_question.pk 0 %}"><img src="{% static 'Images/Icons/minus.png' %}" height="35px" alt=""></a>
+                    <a href="{% url 'voting' single_question.pk 0 %}"><img src="{% static 'Images/Icons/minus.png' %}"
+                                                                           height="35px" alt=""></a>
                 </div>
             </div>
-
             <div class="col-xl-11 card mb-2">
-
                 <div class="col-xl-12" style="float:right;">
                     <div class="col-xl-12 card-body p-3">
                         <h4>{{ single_question.description | safe }}</h4>
@@ -70,53 +71,10 @@
 
 
         {#    Previous Answers#}
-        {% if answers %}
-            <div class="col-xl-12 mt-2">
-                <h4>{{ answers.count }} Answers</h4>
-                <div class="col-xl-12 card mb-2">
-                    {% for answer in answers %}
-                        <div class="col-xl-12">
-                            <div class="col-xl-12 card-body p-3">
-                                <h4>{{ answer.answer | safe }}</h4>
-                            </div>
-                            <div class="col-xl-12 card-body">
-                                <div class="col-xl-8" style="float:left;">
-                                    <div class="mt-5">
-                                        <a href="">share</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 card" id="user_info_on_card" style="float:left;">
-                                    <div class="card-body">
-                                        <small>answered {{ answer.answer_at | timesince | lower }} ago</small>
-                                        <div>
-                                            <img src="" alt="Image" style="border: 1px solid black">
-                                            <a href="">{{ answer.answer_by }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
+        {% include 'partials/previous_answers.html' %}
 
         {#    Answer Form  #}
-        <div class="col-xl-12 mt-4">
-            <h4>Your Answer</h4>
-            <div class="card mb-2">
-                <div class="card-body">
-                    <form method="post" class="col-xl-10" action="{% url 'record_answer' single_question.pk %}">
-                        {% csrf_token %}
-                        <div class="mb-2">
-                            {{ form.media }}
-                            {% include 'shared/_forms.html' %}
-                        </div>
-                        <input type="submit" class="btn btn-outline-success" value="Answer">
-                    </form>
-                </div>
-            </div>
-        </div>
+        {% include 'partials/answer_form.html' %}
+
     </div>
 {% endblock content %}

@@ -141,8 +141,8 @@ CKEDITOR_CONFIGS = {
             ['RemoveFormat'],
             ['CodeSnippet']
         ],
-        'codeSnippet_theme': 'atelier-lakeside.light',
-        'font_name': 'Cascadia Code',
+        'codeSnippet_theme': 'vs',
+        'font_name': 'Roboto Mono',
         'extraPlugins': 'codesnippet'
     }
 }

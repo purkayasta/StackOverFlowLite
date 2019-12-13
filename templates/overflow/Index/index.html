@@ -39,7 +39,7 @@
                 <tbody>
                 {% for question in questions %}
                     <tr>
-                        <td>0</td>
+                        <td>{{ question.votes }}</td>
                         <td>{{ question.answer_count }}</td>
                         <td>{{ question.views }}</td>
                         <td><a href="{% url 'question_detail' question.pk %}">{{ question.title | capfirst }}</a></td>

@@ -1,0 +1,16 @@
+
+<div class="col-xl-12 mt-4">
+    <h4>Your Answer</h4>
+    <div class="card mb-2">
+        <div class="card-body">
+            <form method="post" class="col-xl-10" action="{% url 'record_answer' single_question.pk %}">
+                {% csrf_token %}
+                <div class="mb-2">
+                    {{ form.media }}
+                    {% include 'shared/_forms.html' %}
+                </div>
+                <input type="submit" class="btn btn-outline-success" value="Answer">
+            </form>
+        </div>
+    </div>
+</div>
