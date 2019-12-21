@@ -7,9 +7,8 @@
     New User ? Don't you worry !
 {% endblock %}
 
-
 {% block content %}
-    <form action="" method="post" class="col-xs-10">
+    <form action="" method="post" class="col-xs-10" novalidate>
         {% csrf_token %}
         <div class="card card-body mb-2">
             {% include 'shared/_forms.html' %}

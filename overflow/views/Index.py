@@ -5,7 +5,7 @@ from overflow.models.QuestionModel import QuestionModel
 
 def index(request):
     question_list = QuestionModel.objects.all()
-    return render(request, 'overflow/Index/index.html', {
+    return render(request, 'overflow/index/index.html', {
         'questions': question_list
     })
 

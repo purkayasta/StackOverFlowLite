@@ -12,8 +12,8 @@
         <div class="collapse navbar-collapse" id="mainMenu">
 
             <form class="form-inline my-3 my-lg-0 col-md-10">
-                <input class="form-control col-md-10" type="search" placeholder="Questions Search">
-                <button class="btn btn-outline-success col-md-2" type="">Search</button>
+                <input class="form-control col-md-10" type="search" placeholder="Questions Search" />
+                <button class="btn btn-outline-success col-md-2">Search</button>
             </form>
 
             {% if user.is_authenticated %}
@@ -28,7 +28,7 @@
                     </li>
                 </ul>
             {% else %}
-                <a href="#" class="btn btn-light">Login</a>
+                <a href="{% url 'login' %}" class="btn btn-light">Login</a>
                 <a href="{% url 'signup' %}" class="btn btn-primary">Register</a>
             {% endif %}
         </div>

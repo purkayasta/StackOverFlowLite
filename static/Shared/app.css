@@ -27,5 +27,8 @@ a.nav-link {
 }
 
 code {
-    font-family: Consolas;
+    font-family: "Consolas";
+}
+h6 > p {
+    font-family: "Fira Mono";
 }
