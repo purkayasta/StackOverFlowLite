@@ -3,6 +3,8 @@
 ## Description
 
 Questions Overflow is a question answering webapp.
+# Motivation:
+What if stackoverflow was born before ajax or single page app :v 
 
 ## Installation
 
