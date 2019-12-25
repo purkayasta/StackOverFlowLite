@@ -10,9 +10,10 @@ a.nav-link {
 }
 
 #user_info_on_card {
-    font-family: "Bookman Old Style";
+    font-family: "Roboto Mono";
     box-sizing: border-box;
-    background-color: lightsteelblue;
+    /*border: 1px solid grey;*/
+    /*background-color: lightsteelblue;*/
 
 }
 
@@ -26,9 +27,41 @@ a.nav-link {
     color: #39739d;
 }
 
+#ans {
+    border: 0px;
+}
+
 code {
-    font-family: "Consolas";
+    font-family: "Operator Mono";
 }
+
 h6 > p {
-    font-family: "Fira Mono";
+    /*font-family: "DejaVu Sans Mono";*/
 }
+
+#right_answer {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+small {
+    text-align: center;
+    color: gray;
+}
+

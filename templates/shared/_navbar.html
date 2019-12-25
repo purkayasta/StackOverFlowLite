@@ -12,8 +12,17 @@
         <div class="collapse navbar-collapse" id="mainMenu">
 
             <form class="form-inline my-3 my-lg-0 col-md-10">
-                <input class="form-control col-md-10" type="search" placeholder="Questions Search" />
-                <button class="btn btn-outline-success col-md-2">Search</button>
+                <div class="p-1 bg-light rounded rounded-pill shadow-sm col-md-10">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button id="button-addon2" type="submit" class="btn btn-link text-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                        <input type="search" placeholder="Having troubled! Search any questions !!" aria-describedby="button-addon2"
+                               class="form-control border-0 bg-light">
+                    </div>
+                </div>
             </form>
 
             {% if user.is_authenticated %}
@@ -23,7 +32,7 @@
                            data-toggle="dropdown">{{ user.username }}</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
 
-                            <a class="dropdown-item" href="#">Log out</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
                         </div>
                     </li>
                 </ul>

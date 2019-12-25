@@ -1,31 +1,44 @@
 {% load static %}
-<style>
-    #answers > p {
-        padding-left: 7%;
-    }
-</style>
+
 {% if answers %}
     <div class="col-xl-12">
         <h4>{{ answers.count }} Answers</h4>
-        <div id="answers" class="col-xl-12 card">
+        <hr>
+        <div id="answers" class="col-xl-12">
             {% for answer in answers %}
                 <div class="col-xl-12">
-                    <div class="col-md-1" style="float: left; height: auto; text-align: center; overflow: auto">
+                    <div class="col-xl-1" style="float: left; height: 150px; text-align: center;">
                         <div class="mt-3">
-                            <a href="{% url 'voting' single_question.pk 1 %}"><img
-                                    src="{% static 'Images/Icons/plus.png' %}"
-                                    height="35px" alt=""></a>
+                            <a href="{% url 'a_vote' answer.pk 1 single_question.pk %}">
+                                <img src="{% static 'Images/Icons/plus.png' %}"
+                                     height="35px" alt="">
+                            </a>
                         </div>
+
                         <div class="mt-3">
-                            <h4>{{ single_question.votes }}</h4>
+                            <h4>{{ answer.get_vote_count }}</h4>
                         </div>
+
                         <div class="mt-3">
-                            <a href="{% url 'voting' single_question.pk 0 %}"><img
-                                    src="{% static 'Images/Icons/minus.png' %}"
-                                    height="35px" alt=""></a>
+                            <a href="{% url 'a_vote' answer.pk -1 single_question.pk %}">
+                                <img src="{% static 'Images/Icons/minus.png' %}"
+                                     height="35px" alt="">
+                            </a>
+                        </div>
+
+                        <div class="mt-3">
+                            <a href="{% url 'final_answer' single_question.pk answer.pk %}">
+                                {% if single_question.final_answer_id == answer.id %}
+                                    <img src="{% static 'Images/Icons/right_answer.png' %}"
+                                         height="35px" alt="">
+                                {% elif single_question.asked_by == request.user %}
+                                    <img id="right_answer" src="{% static 'Images/Icons/right_answer.png' %}"
+                                         height="35px" alt="">
+                                {% endif %}
+                            </a>
                         </div>
                     </div>
-                    <div class="col-xl-12 card-body p-3 pl-2" style="min-height: 200px;">
+                    <div id="ans" class="col-xl-11 card p-3" style="min-height: 200px;">
                         <h6>{{ answer.answer | safe }}</h6>
                     </div>
                     <div class="col-xl-12">
@@ -38,8 +51,7 @@
                             <div class="card-body">
                                 <small>answered {{ answer.answer_at | timesince | lower }} ago</small>
                                 <div>
-                                    <img src="" alt="Image" style="border: 1px solid black">
-                                    <a href="">{{ answer.answer_by }}</a>
+                                    <a href="">By {{ answer.answer_by }}</a>
                                 </div>
                             </div>
                         </div>

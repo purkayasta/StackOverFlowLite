@@ -9,46 +9,68 @@
                         <h2>Top Questions ({{ questions.count }})</h2>
                     </div>
                     <div class="col-xs-6" style="float: right;">
-                        <a href="{% url 'ask_question' %}" class="btn btn-outline-warning btn-sm">Ask Questions</a>
+                        <a href="{% url 'ask_question' %}" class="btn btn-primary btn-sm">Ask Questions</a>
 
                     </div>
                 </div>
                 <div class="col-xs-12" style="float: right;">
                     <nav class="nav nav-pills">
                         <a class="btn-sm nav-link active" href="#">All</a>
-                        <a class="btn-sm nav-link" href="#">Week</a>
-                        <a class="btn-sm nav-link" href="#">Month</a>
+                        <a class="btn-sm nav-link" href="#">Newest</a>
+                        <a class="btn-sm nav-link" href="#">Most Voted</a>
                     </nav>
                 </div>
             </div>
         </div>
-        <hr>
         <br>
         <div>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Votes</th>
-                    <th>Answers</th>
-                    <th>View</th>
-                    <th>Question</th>
-                    <th>Since</th>
-                    <th>Asked By</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="col-xl-12">
                 {% for question in questions %}
-                    <tr>
-                        <td>{{ question.votes }}</td>
-                        <td>{{ question.answer_count }}</td>
-                        <td>{{ question.views }}</td>
-                        <td><a href="{% url 'question_detail' question.pk %}">{{ question.title | capfirst }}</a></td>
-                        <td>asked {{ question.asked_at | timesince }} ago</td>
-                        <td>asked by {{ question.asked_by | capfirst }}</td>
-                    </tr>
+                    <div class="row">
+                        <div class="col-xl-1 mb-2">
+                            <div style="float: left; height: 150px; text-align: center;">
+                                <div class="mt-2">
+                                    {{ question.views }} <br>
+                                    views
+                                </div>
+                                <div class="mt-2">
+                                    {{ question.get_vote_count }} <br> votes
+                                </div>
+                                <div class="mt-2">
+                                    {{ question.answer_count }} <br> answers
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{% url 'question_detail' question.pk %}">{{ question.title | capfirst }}</a>
+                                    <h6>{{ question.description | safe | lower | truncatewords:35 }}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-8">
+                                    {% for tag in question.tag_split %}
+                                        <p id="tech_tag">
+                                            {{ tag }}
+                                        </p>
+                                    {% endfor %}
+
+                                </div>
+                                <div class="col-xl-4 text-right">
+                                    <small>asked {{ question.asked_at | date }}
+                                        at {{ question.asked_at | time }}</small>
+                                    <br>
+                                    <small>By {{ question.asked_by | capfirst }} </small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
                 {% endfor %}
-                </tbody>
-            </table>
+            </div>
+
         </div>
     </div>
 {% endblock %}

@@ -6,42 +6,57 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'CSSLibrary/vsdark.css' %}">
     <div class="col-xl-12">
-        <h2>{{ single_question.title | capfirst }}</h2>
-        <div class="col-xl-2" style="float: left;">
-            Asked:
-            <small>{{ single_question.asked_at | timesince }} ago</small>
-        </div>
-        <div class="col-xl-2" style="float: left;">
-            Viewed:
-            <small>{{ single_question.views }} times</small>
-        </div>
+        <h2 class="col">Question: {{ single_question.title | capfirst }}</h2>
+        {#        <div class="col-xl-5" style="float: left; ">#}
+        {#            Asked:#}
+        {#            <small>{{ single_question.asked_at | date }}</small>#}
+        {#        </div>#}
+        {#        <div class="col-xl-2" style="float: left;">#}
+        {#            Viewed:#}
+        {#            <small>{{ single_question.views }} times</small>#}
+        {#        </div>#}
     </div>
-    <br>
-    <br>
 {% endblock %}
 {% block content %}
+    <hr>
     <div class="col-xl-12">
-        <div>
-            <div class="col-md-1" style="float: left; height: 150px; text-align: center;">
+        <div class="row">
+            <div class="col-xl-1" style="float: left; height: 150px; text-align: center;">
+
                 <div class="mt-3">
-                    <a href="{% url 'voting' single_question.pk 1 %}"><img src="{% static 'Images/Icons/plus.png' %}"
-                                                                           height="35px" alt=""></a>
+                    {% if single_question.asked_by != request.user %}
+                        <a href="{% url 'q_vote' single_question.pk 1 %}"><img
+                                src="{% static 'Images/Icons/plus.png' %}"
+                                height="35px" alt=""></a>
+                    {% endif %}
                 </div>
+
                 <div class="mt-3">
-                    <h4>{{ single_question.votes }}</h4>
+                    <h4>{{ single_question.get_vote_count }}</h4>
                 </div>
+
                 <div class="mt-3">
-                    <a href="{% url 'voting' single_question.pk 0 %}"><img src="{% static 'Images/Icons/minus.png' %}"
-                                                                           height="35px" alt=""></a>
+                    {% if single_question.asked_by != request.user %}
+                        <a href="{% url 'q_vote' single_question.pk -1 %}"><img
+                                src="{% static 'Images/Icons/minus.png' %}"
+                                height="35px" alt=""></a>
+                    {% endif %}
                 </div>
+
+                <div class="mt-3">
+                    <div>
+                        <small>{{ single_question.views }} views</small>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-xl-11 card mb-2">
+            <div class="col-xl-11 mb-2">
                 <div class="col-xl-12" style="float:right;">
-                    <div class="col-xl-12 card-body p-3">
+                    <div class="col-xl-12 card-body">
                         <h4>{{ single_question.description | safe }}</h4>
                     </div>
                     <div class="col-xl-12 card-body">
-                        <div class="col-xl-9" style="float:left;">
+                        <div class="col-xl-8" style="float:left;">
                             <div id="tag">
                                 {% for tag in single_question.tag_split %}
                                     <p id="tech_tag">
@@ -54,12 +69,11 @@
                                 <a href="">share</a>
                             </div>
                         </div>
-                        <div class="col-xl-3 card" id="user_info_on_card" style="float:left;">
+                        <div class="col-xl-3 card mb-2" id="user_info_on_card" style="float:right;">
                             <div class="card-body">
                                 <small>asked {{ single_question.asked_at | timesince | lower }} ago</small>
                                 <div>
-                                    <img src="" alt="Image" style="border: 1px solid black">
-                                    <a href="">{{ single_question.asked_by }}</a>
+                                    <a href="">By {{ single_question.asked_by }}</a>
                                 </div>
                             </div>
                         </div>
