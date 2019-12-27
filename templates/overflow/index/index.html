@@ -15,9 +15,9 @@
                 </div>
                 <div class="col-xs-12" style="float: right;">
                     <nav class="nav nav-pills">
-                        <a class="btn-sm nav-link active" href="#">All</a>
-                        <a class="btn-sm nav-link" href="#">Newest</a>
-                        <a class="btn-sm nav-link" href="#">Most Voted</a>
+                        <a class="btn-sm btn-outline-secondary nav-link" href="{% url 'home' %}?query=all">All</a>
+                        <a class="btn-sm btn-outline-secondary nav-link" href="{% url 'home' %}?query=newest">Newest</a>
+                        <a class="btn-sm btn-outline-secondary nav-link" href="{% url 'home' %}?query=most_voted">Most Voted</a>
                     </nav>
                 </div>
             </div>
@@ -70,7 +70,6 @@
                     <hr>
                 {% endfor %}
             </div>
-
         </div>
     </div>
 {% endblock %}

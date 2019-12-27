@@ -11,7 +11,8 @@
         </button>
         <div class="collapse navbar-collapse" id="mainMenu">
 
-            <form class="form-inline my-3 my-lg-0 col-md-10">
+            <form method="post" action="{% url 'home' %}" class="form-inline my-3 my-lg-0 col-md-10">
+                {% csrf_token %}
                 <div class="p-1 bg-light rounded rounded-pill shadow-sm col-md-10">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -19,7 +20,8 @@
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
-                        <input type="search" placeholder="Having troubled! Search any questions !!" aria-describedby="button-addon2"
+                        <input type="search" id="search_bar" name="search_bar"
+                               placeholder="Having troubled! Search any questions !!" aria-describedby="button-addon2"
                                class="form-control border-0 bg-light">
                     </div>
                 </div>

@@ -7,6 +7,12 @@ class VotingOperation(enum.Enum):
     default = 0
 
 
+class FilterOption(enum.Enum):
+    all = 1
+    newest = 2
+    most_voted = 3
+
+
 class NegativeIntConverter:
     regex = r'-?\d+'
 

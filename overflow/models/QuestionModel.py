@@ -9,12 +9,6 @@ class QuestionModel(models.Model):
     description = RichTextField(null=True)
     tag = models.CharField(max_length=120, null=True)
     views = models.PositiveIntegerField(default=0)
-
-    # This section will be vanished
-    # Votes will not come by from this
-    # # It will Come from QuestionVoteModel
-    # votes = models.IntegerField(default=0)
-
     final_answer_id = models.IntegerField(null=True)
     asked_at = models.DateTimeField(auto_now_add=True)
     modified_on = models.DateTimeField(auto_now=True)
