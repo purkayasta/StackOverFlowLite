@@ -24,6 +24,7 @@ class NegativeIntConverter:
 
 
 def get_voting(element, operation):
+
     # if operation is 1
     # if vote is 1 nothing happened
     # if vote is 0/-1 , add 1
@@ -40,3 +41,7 @@ def get_voting(element, operation):
             element = -1
     return element
     # pass
+
+
+def pagination_limit():
+    return int(5)

@@ -1,12 +1,17 @@
 from django.db.models import Count
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from overflow.helper import FilterOption
+from overflow.helper import FilterOption, pagination_limit
 from overflow.models.QuestionModel import QuestionModel
 
 
 def index(request):
+    question_list = []
+    current_page_number = 1
+
     if request.method == "GET":
+        current_page_number = request.GET.get('page', 1)
         question_filter = request.GET.get('query', None)
         if question_filter is None:
             question_list = QuestionModel.objects.all()
@@ -23,6 +28,15 @@ def index(request):
         if question_search is not None:
             question_list = QuestionModel.objects.filter(title__icontains=question_search)
 
+    # adding pagination
+    paginator = Paginator(question_list, pagination_limit())
+    try:
+        questions = paginator.page(current_page_number)
+    except PageNotAnInteger:
+        questions = paginator.page(1)
+    except EmptyPage:
+        questions = paginator.page(paginator.num_pages)
     return render(request, 'overflow/index/index.html', {
-        'questions': question_list
+        'questions': questions,
+        'questions_count': question_list.count()
     })
